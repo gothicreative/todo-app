@@ -1,6 +1,5 @@
 
 // Certainly! Here’s an explanation of what each part of your convex/todos.ts file does, with comments added for clarity:
-
 // The file defines server-side functions for managing a todo list using Convex, a backend-as-a-service for modern web apps.
 // It imports types and helpers from Convex and the data model.
 // The addTodo mutation adds a new todo item to the database.
