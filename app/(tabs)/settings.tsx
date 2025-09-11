@@ -1,8 +1,11 @@
-import { View, Text } from 'react-native'
+import { View,Button, Text } from 'react-native'
 import React from 'react'
+import { useTheme } from '../../hooks/useTheme'
 
 const settings = () => {
+    const {colors, theme, toggleTheme} = useTheme();
   return (
+    
     <View style={{
         flex:1,
         justifyContent:"center",
@@ -14,7 +17,9 @@ const settings = () => {
         color:"blue",
         fontSize:20,
         fontWeight:"bold"
-      }}>settings</Text>
+      }}>setting</Text>
+    <Button title='toggle-theme' onPress={toggleTheme} />
+
     </View>
   )
 }
