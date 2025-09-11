@@ -1,27 +1,14 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
+import { useTheme } from '../../hooks/useTheme';
 
 export default function Index() {
+    const { theme, toggleTheme, colors } = useTheme();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>hi there this tis from index .</Text>
-     </View>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }} >
+      <Button title="Toggle Theme" onPress={toggleTheme} color={colors.primary} />
+    </View> 
   );
 }
   
-const styles = StyleSheet.create({ 
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-  },
-  text: {
-    color: "blue",
-    fontSize: 20,
-    fontWeight: "bold",
-    flexWrap: "wrap",
-    textAlign: "center",
-    margin: 40,
-  },
-});
