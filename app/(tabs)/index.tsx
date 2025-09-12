@@ -1,28 +1,38 @@
-import { Link } from "expo-router";
-import { Button, Text, View } from "react-native";
-import { useTheme } from '../../hooks/useTheme';
+import { Button, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { useMutation, useQuery } from "convex/react";
 import { api } from '../../convex/_generated/api'; // Adjust the path as needed
-
+import  useTheme from '@/hooks/useTheme';
+import { createHomeStyles } from '../../assets/styles/home.styles';
+import { SafeAreaView } from "react-native-safe-area-context";
+import { LinearGradient } from "expo-linear-gradient";
+import  Header  from "../../components/Header";
+import TodoInput from "@/components/TodoInput";
 export default function Index() {
-    const { theme, toggleTheme, colors } = useTheme();
+  const { colors, toggleDarkMode } = useTheme();
     const todos = useQuery(api.todos.getTodos);
+
     const addTodos = useMutation(api.todos.addTodo);
 
-    const backgroundColor = theme === "dark" ? "#18181b" : "#fff";
+    const homeStyles = createHomeStyles(colors);
 
 
-    console.log(todos);
+
+    // console.log(todos);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:backgroundColor }} >
-      <Button title="Toggle Theme" onPress={toggleTheme} color={colors.primary} />
-      <Button title="todos" onPress={()=> addTodos({ text: "jump on the table"})} color={colors.primary} />
+    <LinearGradient
+      // Background Linear Gradient
+      colors={colors.gradients.background}
+      style={homeStyles.container}
+    >
+      <StatusBar barStyle={colors.statusBarStyle} />
+    <SafeAreaView style={homeStyles.safeArea} >
+        <Header />
 
-      <Text style={{  color: theme === "dark" ? "#fff" : "#000" , marginTop: 16 }}>
-        {todos ? `Todos: ${todos.length}` : "Loading todos..."}
-      </Text>
-    </View> 
+        <TodoInput />
+    </SafeAreaView> 
+    </LinearGradient>
   );
 }
+
   
