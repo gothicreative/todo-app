@@ -2,18 +2,18 @@ import { View,Button, Text } from 'react-native'
 import React, { use } from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/hooks/useTheme'
+import  useTheme  from '@/hooks/useTheme'
+
 
 const TabsLayout = () => {
 
-  const {theme, colors} = useTheme();
+  const {toggleDarkMode, colors} = useTheme();
 
-  const backgroundColor = theme === "dark" ? "#18181b" : "#fff";
+  // const backgroundColor = theme === "dark" ? "#18181b" : "#fff";
   return (
     <Tabs screenOptions={{
         headerShown:false,
         tabBarStyle:{ 
-        backgroundColor:backgroundColor,
         borderTopColor:"black",
         height:90,
         paddingBottom:10,

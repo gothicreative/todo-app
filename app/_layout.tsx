@@ -13,7 +13,7 @@ export default function RootLayout() {
     <ThemeProvider>
        <Stack screenOptions={{headerShown:false}}>
     <Stack.Screen name="(tabs)"  />
-  </Stack>
+  </Stack  >
     </ThemeProvider>
     </ConvexProvider>
   );
