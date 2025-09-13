@@ -1,51 +1,48 @@
-import { View,Button, Text } from 'react-native'
-import React, { use } from 'react'
-import { Tabs } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons';
-import  useTheme  from '@/hooks/useTheme'
-
+import useTheme from "@/hooks/useTheme";
+import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
 
 const TabsLayout = () => {
+  const { colors } = useTheme();
 
-  const {toggleDarkMode, colors} = useTheme();
-
-  // const backgroundColor = theme === "dark" ? "#18181b" : "#fff";
   return (
-    <Tabs screenOptions={{
-        headerShown:false,
-        tabBarStyle:{ 
-        borderTopColor:"black",
-        height:90,
-        paddingBottom:10,
-        paddingTop:10
-        }
-
-
-        
-        }} >
- 
-      <Tabs.Screen 
-      name="index" 
-      options={{
-        title:"index",
-        tabBarIcon:({color,size})=>(
-        <Ionicons name="flash" size={size} color={color} />
-        )
-    
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMuted,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopWidth: 1,
+          borderTopColor: colors.border,
+          height: 90,
+          paddingBottom: 30,
+          paddingTop: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "600",
+        },
+        headerShown: false,
       }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Todos",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="flash-outline" size={size} color={color} />
+          ),
+        }}
       />
-
-       <Tabs.Screen 
-      name="settings" 
-      options={{
-        title:"Settings",
-        tabBarIcon:({color,size})=>(
-        <Ionicons name="settings" size={size} color={color}  />
-        )
-      }}
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
+        }}
       />
     </Tabs>
-  )
-}
+  );
+};
 
-export default TabsLayout
+export default TabsLayout;
